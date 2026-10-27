@@ -1,0 +1,8 @@
+{"utc": "2026-10-27T05:10:51Z", "phase": "start", "core_ghz_probe": 2.58348, "elapsed_s": 0.429122, "peak_working_set_bytes": 4435968, "peak_private_bytes": 675840, "suites": "", "quick": false}
+{"utc": "2026-10-27T05:10:52Z", "phase": "start", "core_ghz_probe": 2.56042, "elapsed_s": 0.423521, "peak_working_set_bytes": 4440064, "peak_private_bytes": 684032, "suites": "", "quick": false}
+{"utc": "2026-10-27T05:10:52Z", "phase": "start", "core_ghz_probe": 2.58072, "elapsed_s": 0.433237, "peak_working_set_bytes": 4444160, "peak_private_bytes": 696320, "suites": "", "quick": false}
+{"utc": "2026-10-27T05:10:52Z", "phase": "start", "core_ghz_probe": 2.51126, "elapsed_s": 0.427408, "peak_working_set_bytes": 4440064, "peak_private_bytes": 688128, "suites": "", "quick": false}
+{"utc": "2026-10-27T05:12:17Z", "phase": "start", "core_ghz_probe": 2.56392, "elapsed_s": 0.424415, "peak_working_set_bytes": 4444160, "peak_private_bytes": 688128, "suites": "", "quick": false}
+{"utc": "2026-10-27T05:12:17Z", "phase": "start", "core_ghz_probe": 2.55575, "elapsed_s": 0.426534, "peak_working_set_bytes": 4444160, "peak_private_bytes": 688128, "suites": "", "quick": false}
+{"utc": "2026-10-27T05:12:18Z", "phase": "start", "core_ghz_probe": 2.55857, "elapsed_s": 0.42438, "peak_working_set_bytes": 4440064, "peak_private_bytes": 684032, "suites": "", "quick": false}
+{"utc": "2026-10-27T05:12:18Z", "phase": "start", "core_ghz_probe": 2.54443, "elapsed_s": 0.436986, "peak_working_set_bytes": 4448256, "peak_private_bytes": 688128, "suites": "", "quick": false}

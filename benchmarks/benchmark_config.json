@@ -1,0 +1,88 @@
+// CacheVision benchmark plan. Each suite expands to the cross product
+// sizes x images x mappings x ops; every (size, image, mapping, op) group
+// times all of its variants with repetitions interleaved in shuffled order.
+// Variants: row_major | column_major | morton | tiled:WxH | adaptive_model | adaptive_calib
+{
+  "defaults": {
+    "images": ["photo"],
+    "conditions": ["warm"],
+    "reps": 11,
+    "min_sample_ms": 5
+  },
+  "suites": {
+    "main": {
+      "description": "Runtime/throughput vs image size for every strategy, op and mapping",
+      "sizes": [256, 512, 1024, 2048, 4096, 8192],
+      "ops": ["unpack", "yuv", "hsv", "lab"],
+      "mappings": ["identity", "rotate90"],
+      "variants": ["row_major", "column_major", "tiled:32x32", "tiled:128x128", "morton",
+                   "adaptive_model", "adaptive_calib"],
+      "max_pixels_for_column_major": 16777216
+    },
+    "tile_sweep": {
+      "description": "Square tile size x image size heatmaps",
+      "sizes": [512, 1024, 2048, 4096, 8192],
+      "ops": ["yuv", "lab"],
+      "mappings": ["identity", "rotate90"],
+      "variants": ["row_major", "tiled:8x8", "tiled:16x16", "tiled:32x32", "tiled:64x64",
+                   "tiled:128x128", "tiled:256x256", "tiled:512x512"],
+      "reps": 7
+    },
+    "tile_shape": {
+      "description": "Rectangular tiles at an aliasing (2048) and a non-aliasing (2000) size",
+      "sizes": [2048, 2000],
+      "ops": ["yuv"],
+      "mappings": ["rotate90", "identity"],
+      "variants": [
+        "row_major",
+        "tiled:8x1", "tiled:8x4", "tiled:8x16", "tiled:8x64", "tiled:8x256",
+        "tiled:16x1", "tiled:16x4", "tiled:16x16", "tiled:16x64", "tiled:16x256",
+        "tiled:32x1", "tiled:32x4", "tiled:32x16", "tiled:32x64", "tiled:32x256",
+        "tiled:64x1", "tiled:64x4", "tiled:64x16", "tiled:64x64", "tiled:64x256",
+        "tiled:128x1", "tiled:128x4", "tiled:128x16", "tiled:128x64", "tiled:128x256",
+        "tiled:256x1", "tiled:256x4", "tiled:256x16", "tiled:256x64", "tiled:256x256",
+        "tiled:1024x1", "tiled:1024x4", "tiled:1024x16", "tiled:1024x64", "tiled:1024x256"
+      ],
+      "reps": 7
+    },
+    "cache_condition": {
+      "description": "Warm vs CLFLUSH-ed caches before every run",
+      "sizes": [256, 512, 1024, 2048, 4096],
+      "ops": ["unpack", "yuv", "lab"],
+      "mappings": ["identity"],
+      "variants": ["row_major", "tiled:64x64", "morton"],
+      "conditions": ["warm", "flushed"]
+    },
+    "overhead": {
+      "description": "Address-generation cost (index_only) vs memory access (unpack) vs compute",
+      "sizes": [1024, 4096],
+      "ops": ["index_only", "unpack", "yuv", "lab"],
+      "mappings": ["identity"],
+      "variants": ["row_major", "column_major", "tiled:8x8", "tiled:32x32", "tiled:128x128", "morton"]
+    },
+    "content": {
+      "description": "Data-dependent compute: natural photo vs synthetic images",
+      "sizes": [2048],
+      "images": ["photo", "gradient", "noise", "mixed"],
+      "ops": ["yuv", "hsv", "lab"],
+      "mappings": ["identity"],
+      "variants": ["row_major", "tiled:64x64", "morton"]
+    },
+    "adaptive_unseen": {
+      "description": "Adaptive vs fixed tiles on dimensions never used during development",
+      "sizes": [[1000, 1000], [1920, 1080], [2500, 1700], [3840, 2160], [5000, 3000], [7680, 4320]],
+      "ops": ["yuv", "hsv", "lab"],
+      "mappings": ["identity", "rotate90"],
+      "variants": ["row_major", "tiled:8x8", "tiled:16x16", "tiled:32x32", "tiled:64x64",
+                   "tiled:128x128", "tiled:256x256", "morton", "adaptive_model", "adaptive_calib"],
+      "reps": 7
+    },
+    "simd_compare": {
+      "description": "Run with both cachevision_bench_native and cachevision_bench_scalar",
+      "sizes": [1024, 4096],
+      "ops": ["unpack", "yuv", "hsv", "lab"],
+      "mappings": ["identity", "rotate90"],
+      "variants": ["row_major", "tiled:64x64", "morton"]
+    }
+  }
+}

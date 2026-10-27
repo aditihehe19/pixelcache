@@ -1,0 +1,2 @@
+{"utc": "2026-10-27T08:56:06Z", "phase": "start", "core_ghz_probe": 3.97177, "elapsed_s": 0.423277, "peak_working_set_bytes": 4435968, "peak_private_bytes": 679936, "suites": "simd_compare;", "quick": false}
+{"utc": "2026-10-27T08:57:11Z", "phase": "end_suite_simd_compare", "core_ghz_probe": 3.71616, "elapsed_s": 65.4954, "peak_working_set_bytes": 256368640, "peak_private_bytes": 252919808, "suites": "simd_compare;", "quick": false}

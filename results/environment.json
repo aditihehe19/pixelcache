@@ -1,0 +1,116 @@
+{
+  "before": {
+    "utc": "2026-10-27T08:26:57+00:00",
+    "tag": "before",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "machine": "AMD64",
+    "python": "3.13.3",
+    "numpy_version": "2.2.6",
+    "pandas_version": "2.3.0",
+    "matplotlib_version": "3.11.1",
+    "cv2_version": "4.12.0",
+    "psutil_version": "7.2.2",
+    "cmake": "cmake version 4.4.4",
+    "cxx": "g++ (MinGW-W64 x86_64-ucrt-posix-seh, built by Brecht Sanders, r3) 16.2.0",
+    "git_commit": "not a git checkout",
+    "power_plan": "Power Scheme GUID: 381b4222-f694-41f0-9685-ff5bb260df2e  (Balanced)",
+    "ac_power": true,
+    "battery_percent": 31,
+    "logical_cpus": 16,
+    "physical_cpus": 12,
+    "total_memory_bytes": 16849948672,
+    "available_memory_bytes": 3411062784,
+    "system_cpu_percent_1s": 8.3,
+    "top_processes_cpu_percent": [
+      {
+        "name": "System Idle Process",
+        "cpu_percent": 1485.4
+      },
+      {
+        "name": "python.exe",
+        "cpu_percent": 40.2
+      },
+      {
+        "name": "chrome.exe",
+        "cpu_percent": 21.5
+      },
+      {
+        "name": "claude.exe",
+        "cpu_percent": 9.1
+      },
+      {
+        "name": "MsMpEng.exe",
+        "cpu_percent": 6.5
+      },
+      {
+        "name": "claude.exe",
+        "cpu_percent": 5.7
+      },
+      {
+        "name": "svchost.exe",
+        "cpu_percent": 4.3
+      },
+      {
+        "name": "System",
+        "cpu_percent": 4.0
+      }
+    ]
+  },
+  "after": {
+    "utc": "2026-10-27T08:57:46+00:00",
+    "tag": "after",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "machine": "AMD64",
+    "python": "3.13.3",
+    "numpy_version": "2.2.6",
+    "pandas_version": "2.3.0",
+    "matplotlib_version": "3.11.1",
+    "cv2_version": "4.12.0",
+    "psutil_version": "7.2.2",
+    "cmake": "cmake version 4.4.4",
+    "cxx": "g++ (MinGW-W64 x86_64-ucrt-posix-seh, built by Brecht Sanders, r3) 16.2.0",
+    "git_commit": "HEAD",
+    "power_plan": "Power Scheme GUID: 381b4222-f694-41f0-9685-ff5bb260df2e  (Balanced)",
+    "ac_power": true,
+    "battery_percent": 76,
+    "logical_cpus": 16,
+    "physical_cpus": 12,
+    "total_memory_bytes": 16849948672,
+    "available_memory_bytes": 5014585344,
+    "system_cpu_percent_1s": 8.0,
+    "top_processes_cpu_percent": [
+      {
+        "name": "System Idle Process",
+        "cpu_percent": 1463.3
+      },
+      {
+        "name": "python.exe",
+        "cpu_percent": 48.5
+      },
+      {
+        "name": "msedgewebview2.exe",
+        "cpu_percent": 19.2
+      },
+      {
+        "name": "claude.exe",
+        "cpu_percent": 12.8
+      },
+      {
+        "name": "System",
+        "cpu_percent": 5.2
+      },
+      {
+        "name": "claude.exe",
+        "cpu_percent": 4.0
+      },
+      {
+        "name": "svchost.exe",
+        "cpu_percent": 3.7
+      },
+      {
+        "name": "parsecd.exe",
+        "cpu_percent": 2.0
+      }
+    ]
+  }
+}

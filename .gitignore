@@ -1,0 +1,22 @@
+# build trees
+build/
+build-*/
+cmake-build-*/
+*.obj
+*.o
+*.exe
+*.a
+
+# generated benchmark inputs (reproducible with scripts/prepare_images.py)
+data/*.ppm
+
+# large intermediate dumps from validation (re-created on demand)
+results/validation/*.f32
+results/validation/*_input.ppm
+
+# python / editor noise
+__pycache__/
+*.pyc
+.vscode/
+.idea/
+.DS_Store

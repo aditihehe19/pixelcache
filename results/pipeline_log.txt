@@ -1,0 +1,365 @@
++ ctest --test-dir build --output-on-failure -V
+  (4.4s)
+  tests passed (log: results/test_log.txt)
++ C:\Users\ADITI KOTNALA\AppData\Local\Programs\Python\Python313\python.exe scripts/collect_env.py --tag before
+environment (before): AC power=True, battery=31%, power plan=Power Scheme GUID: 381b4222-f694-41f0-9685-ff5bb260df2e  (Balanced)
+  (9.3s)
++ K:\pixelcache\build\cachevision_bench_native.exe --sysinfo --out K:\pixelcache\results\raw
+cachevision_bench [native] on 12th Gen Intel(R) Core(TM) i5-12500H, pinned: logical CPU 2 (efficiency class 1), L1D=49152 L2=1310720 LLC=18874368 (geometry from CPUID)
+  (0.5s)
++ K:\pixelcache\build\cachevision_bench_scalar.exe --sysinfo --out K:\pixelcache\results\raw
+cachevision_bench [scalar] on 12th Gen Intel(R) Core(TM) i5-12500H, pinned: logical CPU 2 (efficiency class 1), L1D=49152 L2=1310720 LLC=18874368 (geometry from CPUID)
+  (0.5s)
++ K:\pixelcache\build\cachevision_bench_native.exe --memory --out K:\pixelcache\results\raw
+cachevision_bench [native] on 12th Gen Intel(R) Core(TM) i5-12500H, pinned: logical CPU 2 (efficiency class 1), L1D=49152 L2=1310720 LLC=18874368 (geometry from CPUID)
+  memory: 4096 bytes done
+  memory: 8192 bytes done
+  memory: 16384 bytes done
+  memory: 24576 bytes done
+  memory: 32768 bytes done
+  memory: 49152 bytes done
+  memory: 65536 bytes done
+  memory: 98304 bytes done
+  memory: 131072 bytes done
+  memory: 196608 bytes done
+  memory: 262144 bytes done
+  memory: 393216 bytes done
+  memory: 524288 bytes done
+  memory: 786432 bytes done
+  memory: 1048576 bytes done
+  memory: 1572864 bytes done
+  memory: 2097152 bytes done
+  memory: 3145728 bytes done
+  memory: 4194304 bytes done
+  memory: 6291456 bytes done
+  memory: 8388608 bytes done
+  memory: 12582912 bytes done
+  memory: 16777216 bytes done
+  memory: 25165824 bytes done
+  memory: 33554432 bytes done
+  memory: 50331648 bytes done
+  memory: 67108864 bytes done
+  memory: 100663296 bytes done
+  memory: 134217728 bytes done
+  memory: 201326592 bytes done
+  memory: 268435456 bytes done
+  memory: 402653184 bytes done
+  memory: 536870912 bytes done
+  (19.0s)
++ K:\pixelcache\build\cachevision_bench_native.exe --config benchmarks/benchmark_config.json --suites main,tile_sweep,tile_shape,cache_condition,overhead,content,adaptive_unseen,simd_compare --out K:\pixelcache\results\raw
+cachevision_bench [native] on 12th Gen Intel(R) Core(TM) i5-12500H, pinned: logical CPU 2 (efficiency class 1), L1D=49152 L2=1310720 LLC=18874368 (geometry from CPUID)
+=== suite main ===
+[main] photo 256x256 unpack/identity: 7 results in 0.7s, fastest row_major 0.016 ms
+[main] photo 256x256 yuv/identity: 7 results in 0.6s, fastest adaptive_model 0.051 ms
+[main] photo 256x256 hsv/identity: 7 results in 0.6s, fastest column_major 0.231 ms
+[main] photo 256x256 lab/identity: 7 results in 0.8s, fastest adaptive_calib 1.532 ms
+[main] photo 256x256 unpack/rotate90: 7 results in 0.7s, fastest adaptive_calib 0.055 ms
+[main] photo 256x256 yuv/rotate90: 7 results in 0.7s, fastest adaptive_calib 0.087 ms
+[main] photo 256x256 hsv/rotate90: 7 results in 0.7s, fastest column_major 0.248 ms
+[main] photo 256x256 lab/rotate90: 7 results in 0.8s, fastest adaptive_calib 1.575 ms
+[main] photo 512x512 unpack/identity: 7 results in 0.7s, fastest adaptive_model 0.097 ms
+[main] photo 512x512 yuv/identity: 7 results in 0.7s, fastest adaptive_model 0.210 ms
+[main] photo 512x512 hsv/identity: 7 results in 0.7s, fastest adaptive_model 0.893 ms
+[main] photo 512x512 lab/identity: 7 results in 0.9s, fastest adaptive_model 6.107 ms
+[main] photo 512x512 unpack/rotate90: 7 results in 0.7s, fastest adaptive_model 0.254 ms
+[main] photo 512x512 yuv/rotate90: 7 results in 0.7s, fastest adaptive_model 0.394 ms
+[main] photo 512x512 hsv/rotate90: 7 results in 0.7s, fastest column_major 0.941 ms
+[main] photo 512x512 lab/rotate90: 7 results in 0.9s, fastest adaptive_calib 5.815 ms
+[main] photo 1024x1024 unpack/identity: 7 results in 0.7s, fastest adaptive_model 0.454 ms
+[main] photo 1024x1024 yuv/identity: 7 results in 0.7s, fastest adaptive_model 0.909 ms
+[main] photo 1024x1024 hsv/identity: 7 results in 0.9s, fastest adaptive_model 3.565 ms
+[main] photo 1024x1024 lab/identity: 7 results in 2.8s, fastest adaptive_model 22.473 ms
+[main] photo 1024x1024 unpack/rotate90: 7 results in 0.9s, fastest column_major 1.497 ms
+[main] photo 1024x1024 yuv/rotate90: 7 results in 1.0s, fastest column_major 2.267 ms
+[main] photo 1024x1024 hsv/rotate90: 7 results in 1.1s, fastest column_major 3.868 ms
+[main] photo 1024x1024 lab/rotate90: 7 results in 3.1s, fastest row_major 22.834 ms
+[main] photo 2048x2048 unpack/identity: 7 results in 1.8s, fastest tiled_32x32 4.179 ms
+[main] photo 2048x2048 yuv/identity: 7 results in 1.8s, fastest adaptive_calib 4.220 ms
+[main] photo 2048x2048 hsv/identity: 7 results in 2.5s, fastest adaptive_calib 13.924 ms
+[main] photo 2048x2048 lab/identity: 7 results in 10.3s, fastest adaptive_model 89.286 ms
+[main] photo 2048x2048 unpack/rotate90: 7 results in 2.3s, fastest adaptive_calib 8.963 ms
+[main] photo 2048x2048 yuv/rotate90: 7 results in 2.5s, fastest morton 15.321 ms
+[main] photo 2048x2048 hsv/rotate90: 7 results in 2.9s, fastest adaptive_model 16.818 ms
+[main] photo 2048x2048 lab/rotate90: 7 results in 10.7s, fastest tiled_128x128 94.208 ms
+[main] photo 4096x4096 unpack/identity: 7 results in 6.2s, fastest row_major 16.918 ms
+[main] photo 4096x4096 yuv/identity: 7 results in 7.1s, fastest row_major 19.556 ms
+[main] photo 4096x4096 hsv/identity: 7 results in 10.1s, fastest adaptive_model 54.912 ms
+[main] photo 4096x4096 lab/identity: 7 results in 40.2s, fastest adaptive_calib 349.695 ms
+[main] photo 4096x4096 unpack/rotate90: 7 results in 10.4s, fastest adaptive_calib 38.498 ms
+[main] photo 4096x4096 yuv/rotate90: 7 results in 11.7s, fastest morton 64.659 ms
+[main] photo 4096x4096 hsv/rotate90: 7 results in 12.9s, fastest adaptive_calib 74.061 ms
+[main] photo 4096x4096 lab/rotate90: 7 results in 43.7s, fastest adaptive_model 394.858 ms
+[main] photo 8192x8192 unpack/identity: 6 results in 9.3s, fastest row_major 73.020 ms
+[main] photo 8192x8192 yuv/identity: 6 results in 10.8s, fastest adaptive_calib 77.356 ms
+[main] photo 8192x8192 hsv/identity: 6 results in 23.4s, fastest adaptive_calib 225.451 ms
+[main] photo 8192x8192 lab/identity: 6 results in 131.5s, fastest row_major 1448.366 ms
+[main] photo 8192x8192 unpack/rotate90: 6 results in 33.1s, fastest adaptive_calib 183.879 ms
+[main] photo 8192x8192 yuv/rotate90: 6 results in 38.5s, fastest morton 295.400 ms
+[main] photo 8192x8192 hsv/rotate90: 6 results in 41.7s, fastest adaptive_calib 320.386 ms
+[main] photo 8192x8192 lab/rotate90: 6 results in 157.2s, fastest tiled_128x128 1813.802 ms
+=== suite tile_sweep ===
+[tile_sweep] photo 512x512 yuv/identity: 8 results in 0.4s, fastest row_major 0.255 ms
+[tile_sweep] photo 512x512 lab/identity: 8 results in 0.6s, fastest tiled_128x128 6.521 ms
+[tile_sweep] photo 512x512 yuv/rotate90: 8 results in 0.5s, fastest tiled_16x16 0.452 ms
+[tile_sweep] photo 512x512 lab/rotate90: 8 results in 0.6s, fastest tiled_256x256 6.465 ms
+[tile_sweep] photo 1024x1024 yuv/identity: 8 results in 0.5s, fastest row_major 1.092 ms
+[tile_sweep] photo 1024x1024 lab/identity: 8 results in 2.4s, fastest row_major 28.506 ms
+[tile_sweep] photo 1024x1024 yuv/rotate90: 8 results in 0.7s, fastest tiled_128x128 4.130 ms
+[tile_sweep] photo 1024x1024 lab/rotate90: 8 results in 2.2s, fastest tiled_128x128 26.965 ms
+[tile_sweep] photo 2048x2048 yuv/identity: 8 results in 0.8s, fastest row_major 4.821 ms
+[tile_sweep] photo 2048x2048 lab/identity: 8 results in 8.2s, fastest row_major 102.702 ms
+[tile_sweep] photo 2048x2048 yuv/rotate90: 8 results in 2.0s, fastest tiled_64x64 18.218 ms
+[tile_sweep] photo 2048x2048 lab/rotate90: 8 results in 8.4s, fastest tiled_128x128 108.249 ms
+[tile_sweep] photo 4096x4096 yuv/identity: 8 results in 2.9s, fastest row_major 20.974 ms
+[tile_sweep] photo 4096x4096 lab/identity: 8 results in 32.5s, fastest row_major 391.215 ms
+[tile_sweep] photo 4096x4096 yuv/rotate90: 8 results in 9.7s, fastest tiled_8x8 78.963 ms
+[tile_sweep] photo 4096x4096 lab/rotate90: 8 results in 33.7s, fastest tiled_64x64 441.158 ms
+[tile_sweep] photo 8192x8192 yuv/identity: 8 results in 11.2s, fastest row_major 82.565 ms
+[tile_sweep] photo 8192x8192 lab/identity: 8 results in 126.7s, fastest row_major 1513.480 ms
+[tile_sweep] photo 8192x8192 yuv/rotate90: 8 results in 45.3s, fastest tiled_16x16 334.673 ms
+[tile_sweep] photo 8192x8192 lab/rotate90: 8 results in 136.8s, fastest tiled_8x8 1810.521 ms
+=== suite tile_shape ===
+[tile_shape] photo 2048x2048 yuv/rotate90: 36 results in 10.2s, fastest tiled_8x64 16.815 ms
+[tile_shape] photo 2048x2048 yuv/identity: 36 results in 3.4s, fastest row_major 4.759 ms
+[tile_shape] photo 2000x2000 yuv/rotate90: 36 results in 5.1s, fastest tiled_32x64 9.988 ms
+[tile_shape] photo 2000x2000 yuv/identity: 36 results in 3.5s, fastest tiled_32x16 4.470 ms
+=== suite cache_condition ===
+[cache_condition] photo 256x256 unpack/identity: 6 results in 0.7s, fastest row_major 0.018 ms
+[cache_condition] photo 256x256 yuv/identity: 6 results in 0.7s, fastest tiled_64x64 0.057 ms
+[cache_condition] photo 256x256 lab/identity: 6 results in 0.8s, fastest tiled_64x64 1.406 ms
+[cache_condition] photo 512x512 unpack/identity: 6 results in 0.7s, fastest row_major 0.110 ms
+[cache_condition] photo 512x512 yuv/identity: 6 results in 0.7s, fastest row_major 0.237 ms
+[cache_condition] photo 512x512 lab/identity: 6 results in 1.0s, fastest tiled_64x64 6.167 ms
+[cache_condition] photo 1024x1024 unpack/identity: 6 results in 1.0s, fastest row_major 0.514 ms
+[cache_condition] photo 1024x1024 yuv/identity: 6 results in 1.0s, fastest row_major 0.956 ms
+[cache_condition] photo 1024x1024 lab/identity: 6 results in 2.7s, fastest row_major 24.683 ms
+[cache_condition] photo 2048x2048 unpack/identity: 6 results in 2.0s, fastest row_major 4.462 ms
+[cache_condition] photo 2048x2048 yuv/identity: 6 results in 2.0s, fastest row_major 4.561 ms
+[cache_condition] photo 2048x2048 lab/identity: 6 results in 9.5s, fastest row_major 98.902 ms
+[cache_condition] photo 4096x4096 unpack/identity: 6 results in 5.6s, fastest row_major 16.942 ms
+[cache_condition] photo 4096x4096 yuv/identity: 6 results in 6.6s, fastest row_major 18.343 ms
+[cache_condition] photo 4096x4096 lab/identity: 6 results in 36.0s, fastest row_major 368.849 ms
+=== suite overhead ===
+[overhead] photo 1024x1024 index_only/identity: 6 results in 0.6s, fastest row_major 0.284 ms
+[overhead] photo 1024x1024 unpack/identity: 6 results in 0.7s, fastest row_major 0.520 ms
+[overhead] photo 1024x1024 yuv/identity: 6 results in 0.7s, fastest row_major 1.011 ms
+[overhead] photo 1024x1024 lab/identity: 6 results in 2.9s, fastest tiled_128x128 26.864 ms
+[overhead] photo 4096x4096 index_only/identity: 6 results in 1.0s, fastest row_major 4.511 ms
+[overhead] photo 4096x4096 unpack/identity: 6 results in 6.4s, fastest row_major 17.395 ms
+[overhead] photo 4096x4096 yuv/identity: 6 results in 7.4s, fastest row_major 19.767 ms
+[overhead] photo 4096x4096 lab/identity: 6 results in 37.1s, fastest row_major 366.710 ms
+=== suite content ===
+[content] photo 2048x2048 yuv/identity: 3 results in 0.7s, fastest row_major 4.578 ms
+[content] photo 2048x2048 hsv/identity: 3 results in 1.1s, fastest row_major 15.213 ms
+[content] photo 2048x2048 lab/identity: 3 results in 4.5s, fastest row_major 93.912 ms
+[content] gradient 2048x2048 yuv/identity: 3 results in 0.7s, fastest row_major 4.586 ms
+[content] gradient 2048x2048 hsv/identity: 3 results in 0.9s, fastest row_major 11.543 ms
+[content] gradient 2048x2048 lab/identity: 3 results in 5.3s, fastest tiled_64x64 117.596 ms
+[content] noise 2048x2048 yuv/identity: 3 results in 0.7s, fastest row_major 4.623 ms
+[content] noise 2048x2048 hsv/identity: 3 results in 2.8s, fastest row_major 55.626 ms
+[content] noise 2048x2048 lab/identity: 3 results in 8.1s, fastest row_major 178.755 ms
+[content] mixed 2048x2048 yuv/identity: 3 results in 0.7s, fastest row_major 4.592 ms
+[content] mixed 2048x2048 hsv/identity: 3 results in 1.2s, fastest row_major 18.312 ms
+[content] mixed 2048x2048 lab/identity: 3 results in 5.5s, fastest tiled_64x64 122.647 ms
+=== suite adaptive_unseen ===
+[adaptive_unseen] photo 1000x1000 yuv/identity: 10 results in 0.7s, fastest row_major 0.998 ms
+[adaptive_unseen] photo 1000x1000 hsv/identity: 10 results in 0.9s, fastest row_major 3.772 ms
+[adaptive_unseen] photo 1000x1000 lab/identity: 10 results in 2.8s, fastest adaptive_model 23.870 ms
+[adaptive_unseen] photo 1000x1000 yuv/rotate90: 10 results in 0.7s, fastest adaptive_model 1.642 ms
+[adaptive_unseen] photo 1000x1000 hsv/rotate90: 10 results in 1.0s, fastest adaptive_calib 4.053 ms
+[adaptive_unseen] photo 1000x1000 lab/rotate90: 10 results in 3.1s, fastest adaptive_model 24.634 ms
+[adaptive_unseen] photo 1920x1080 yuv/identity: 10 results in 0.8s, fastest adaptive_calib 2.253 ms
+[adaptive_unseen] photo 1920x1080 hsv/identity: 10 results in 1.1s, fastest row_major 7.855 ms
+[adaptive_unseen] photo 1920x1080 lab/identity: 10 results in 5.4s, fastest adaptive_model 49.331 ms
+[adaptive_unseen] photo 1920x1080 yuv/rotate90: 10 results in 0.9s, fastest tiled_32x32 4.520 ms
+[adaptive_unseen] photo 1920x1080 hsv/rotate90: 10 results in 1.2s, fastest tiled_256x256 10.007 ms
+[adaptive_unseen] photo 1920x1080 lab/rotate90: 10 results in 5.7s, fastest row_major 50.761 ms
+[adaptive_unseen] photo 2500x1700 yuv/identity: 10 results in 1.1s, fastest tiled_32x32 4.784 ms
+[adaptive_unseen] photo 2500x1700 hsv/identity: 10 results in 2.0s, fastest adaptive_model 16.150 ms
+[adaptive_unseen] photo 2500x1700 lab/identity: 10 results in 10.2s, fastest adaptive_calib 96.377 ms
+[adaptive_unseen] photo 2500x1700 yuv/rotate90: 10 results in 1.5s, fastest tiled_128x128 9.522 ms
+[adaptive_unseen] photo 2500x1700 hsv/rotate90: 10 results in 2.3s, fastest row_major 19.256 ms
+[adaptive_unseen] photo 2500x1700 lab/rotate90: 10 results in 10.8s, fastest row_major 99.082 ms
+[adaptive_unseen] photo 3840x2160 yuv/identity: 10 results in 1.9s, fastest adaptive_calib 9.483 ms
+[adaptive_unseen] photo 3840x2160 hsv/identity: 10 results in 3.7s, fastest adaptive_model 31.234 ms
+[adaptive_unseen] photo 3840x2160 lab/identity: 10 results in 20.5s, fastest row_major 191.630 ms
+[adaptive_unseen] photo 3840x2160 yuv/rotate90: 10 results in 3.2s, fastest tiled_32x32 20.739 ms
+[adaptive_unseen] photo 3840x2160 hsv/rotate90: 10 results in 4.4s, fastest tiled_8x8 34.450 ms
+[adaptive_unseen] photo 3840x2160 lab/rotate90: 10 results in 20.2s, fastest adaptive_calib 188.146 ms
+[adaptive_unseen] photo 5000x3000 yuv/identity: 10 results in 3.2s, fastest row_major 17.160 ms
+[adaptive_unseen] photo 5000x3000 hsv/identity: 10 results in 6.3s, fastest adaptive_calib 52.738 ms
+[adaptive_unseen] photo 5000x3000 lab/identity: 10 results in 33.0s, fastest row_major 314.548 ms
+[adaptive_unseen] photo 5000x3000 yuv/rotate90: 10 results in 5.2s, fastest tiled_32x32 38.913 ms
+[adaptive_unseen] photo 5000x3000 hsv/rotate90: 10 results in 7.0s, fastest tiled_8x8 55.500 ms
+[adaptive_unseen] photo 5000x3000 lab/rotate90: 10 results in 32.7s, fastest adaptive_calib 309.909 ms
+[adaptive_unseen] photo 7680x4320 yuv/identity: 10 results in 6.5s, fastest adaptive_calib 36.747 ms
+[adaptive_unseen] photo 7680x4320 hsv/identity: 10 results in 12.6s, fastest adaptive_model 104.155 ms
+[adaptive_unseen] photo 7680x4320 lab/identity: 10 results in 72.2s, fastest adaptive_model 682.772 ms
+[adaptive_unseen] photo 7680x4320 yuv/rotate90: 10 results in 13.0s, fastest tiled_32x32 85.796 ms
+[adaptive_unseen] photo 7680x4320 hsv/rotate90: 10 results in 17.9s, fastest tiled_8x8 132.779 ms
+[adaptive_unseen] photo 7680x4320 lab/rotate90: 10 results in 77.9s, fastest row_major 765.678 ms
+=== suite simd_compare ===
+[simd_compare] photo 1024x1024 unpack/identity: 3 results in 0.5s, fastest row_major 0.516 ms
+[simd_compare] photo 1024x1024 yuv/identity: 3 results in 0.5s, fastest row_major 0.985 ms
+[simd_compare] photo 1024x1024 hsv/identity: 3 results in 0.5s, fastest row_major 3.826 ms
+[simd_compare] photo 1024x1024 lab/identity: 3 results in 1.3s, fastest row_major 25.124 ms
+[simd_compare] photo 1024x1024 unpack/rotate90: 3 results in 0.5s, fastest morton 2.729 ms
+[simd_compare] photo 1024x1024 yuv/rotate90: 3 results in 0.6s, fastest morton 3.682 ms
+[simd_compare] photo 1024x1024 hsv/rotate90: 3 results in 0.6s, fastest tiled_64x64 4.604 ms
+[simd_compare] photo 1024x1024 lab/rotate90: 3 results in 1.4s, fastest tiled_64x64 26.230 ms
+[simd_compare] photo 4096x4096 unpack/identity: 3 results in 1.5s, fastest row_major 17.137 ms
+[simd_compare] photo 4096x4096 yuv/identity: 3 results in 2.1s, fastest row_major 20.182 ms
+[simd_compare] photo 4096x4096 hsv/identity: 3 results in 3.6s, fastest row_major 59.780 ms
+[simd_compare] photo 4096x4096 lab/identity: 3 results in 18.3s, fastest row_major 383.616 ms
+[simd_compare] photo 4096x4096 unpack/rotate90: 3 results in 5.6s, fastest morton 51.411 ms
+[simd_compare] photo 4096x4096 yuv/rotate90: 3 results in 5.8s, fastest morton 67.344 ms
+[simd_compare] photo 4096x4096 hsv/rotate90: 3 results in 6.4s, fastest tiled_64x64 84.228 ms
+[simd_compare] photo 4096x4096 lab/rotate90: 3 results in 18.9s, fastest tiled_64x64 420.762 ms
+  (1719.9s)
++ K:\pixelcache\build\cachevision_bench_scalar.exe --config benchmarks/benchmark_config.json --suites simd_compare --out K:\pixelcache\results\raw
+cachevision_bench [scalar] on 12th Gen Intel(R) Core(TM) i5-12500H, pinned: logical CPU 2 (efficiency class 1), L1D=49152 L2=1310720 LLC=18874368 (geometry from CPUID)
+=== suite simd_compare ===
+[simd_compare] photo 1024x1024 unpack/identity: 3 results in 0.5s, fastest row_major 0.957 ms
+[simd_compare] photo 1024x1024 yuv/identity: 3 results in 0.5s, fastest row_major 1.999 ms
+[simd_compare] photo 1024x1024 hsv/identity: 3 results in 0.5s, fastest row_major 3.710 ms
+[simd_compare] photo 1024x1024 lab/identity: 3 results in 1.3s, fastest tiled_64x64 24.629 ms
+[simd_compare] photo 1024x1024 unpack/rotate90: 3 results in 0.5s, fastest morton 2.757 ms
+[simd_compare] photo 1024x1024 yuv/rotate90: 3 results in 0.5s, fastest tiled_64x64 3.558 ms
+[simd_compare] photo 1024x1024 hsv/rotate90: 3 results in 0.6s, fastest tiled_64x64 4.623 ms
+[simd_compare] photo 1024x1024 lab/rotate90: 3 results in 1.3s, fastest tiled_64x64 24.797 ms
+[simd_compare] photo 4096x4096 unpack/identity: 3 results in 1.5s, fastest row_major 19.364 ms
+[simd_compare] photo 4096x4096 yuv/identity: 3 results in 2.2s, fastest row_major 35.260 ms
+[simd_compare] photo 4096x4096 hsv/identity: 3 results in 3.6s, fastest row_major 59.066 ms
+[simd_compare] photo 4096x4096 lab/identity: 3 results in 17.1s, fastest row_major 361.774 ms
+[simd_compare] photo 4096x4096 unpack/rotate90: 3 results in 5.3s, fastest morton 48.594 ms
+[simd_compare] photo 4096x4096 yuv/rotate90: 3 results in 5.6s, fastest morton 63.559 ms
+[simd_compare] photo 4096x4096 hsv/rotate90: 3 results in 6.2s, fastest tiled_64x64 80.681 ms
+[simd_compare] photo 4096x4096 lab/rotate90: 3 results in 17.6s, fastest tiled_64x64 395.253 ms
+  (65.5s)
++ K:\pixelcache\build\cachevision_sim.exe --sizes 256,512,1024,2000,2048,4096 --out K:\pixelcache\results\raw
+sim 256 identity row_major        L1D miss/px 0.234  L2 0.234  L3 0.234  DRAM 15.0 B/px
+sim 256 identity column_major     L1D miss/px 2.156  L2 0.234  L3 0.234  DRAM 15.0 B/px
+sim 256 identity morton           L1D miss/px 0.234  L2 0.234  L3 0.234  DRAM 15.0 B/px
+sim 256 identity tiled_8x8        L1D miss/px 0.234  L2 0.234  L3 0.234  DRAM 15.0 B/px
+sim 256 identity tiled_16x16      L1D miss/px 0.234  L2 0.234  L3 0.234  DRAM 15.0 B/px
+sim 256 identity tiled_32x32      L1D miss/px 0.234  L2 0.234  L3 0.234  DRAM 15.0 B/px
+sim 256 identity tiled_64x64      L1D miss/px 0.234  L2 0.234  L3 0.234  DRAM 15.0 B/px
+sim 256 identity tiled_128x128    L1D miss/px 0.234  L2 0.234  L3 0.234  DRAM 15.0 B/px
+sim 256 identity tiled_256x256    L1D miss/px 0.234  L2 0.234  L3 0.234  DRAM 15.0 B/px
+sim 256 identity adaptive_model   L1D miss/px 0.234  L2 0.234  L3 0.234  DRAM 15.0 B/px
+sim 256 rotate90 row_major        L1D miss/px 1.172  L2 0.234  L3 0.234  DRAM 15.0 B/px
+sim 256 rotate90 column_major     L1D miss/px 1.219  L2 0.234  L3 0.234  DRAM 15.0 B/px
+sim 256 rotate90 morton           L1D miss/px 0.234  L2 0.234  L3 0.234  DRAM 15.0 B/px
+sim 256 rotate90 tiled_8x8        L1D miss/px 0.297  L2 0.234  L3 0.234  DRAM 15.0 B/px
+sim 256 rotate90 tiled_16x16      L1D miss/px 0.234  L2 0.234  L3 0.234  DRAM 15.0 B/px
+sim 256 rotate90 tiled_32x32      L1D miss/px 0.235  L2 0.234  L3 0.234  DRAM 15.0 B/px
+sim 256 rotate90 tiled_64x64      L1D miss/px 1.172  L2 0.234  L3 0.234  DRAM 15.0 B/px
+sim 256 rotate90 tiled_128x128    L1D miss/px 1.172  L2 0.234  L3 0.234  DRAM 15.0 B/px
+sim 256 rotate90 tiled_256x256    L1D miss/px 1.172  L2 0.234  L3 0.234  DRAM 15.0 B/px
+sim 256 rotate90 adaptive_model   L1D miss/px 1.172  L2 0.234  L3 0.234  DRAM 15.0 B/px
+sim 512 identity row_major        L1D miss/px 0.234  L2 0.234  L3 0.234  DRAM 15.0 B/px
+sim 512 identity column_major     L1D miss/px 2.156  L2 0.234  L3 0.234  DRAM 15.0 B/px
+sim 512 identity morton           L1D miss/px 0.235  L2 0.234  L3 0.234  DRAM 15.0 B/px
+sim 512 identity tiled_8x8        L1D miss/px 0.234  L2 0.234  L3 0.234  DRAM 15.0 B/px
+sim 512 identity tiled_16x16      L1D miss/px 0.234  L2 0.234  L3 0.234  DRAM 15.0 B/px
+sim 512 identity tiled_32x32      L1D miss/px 0.237  L2 0.234  L3 0.234  DRAM 15.0 B/px
+sim 512 identity tiled_64x64      L1D miss/px 0.234  L2 0.234  L3 0.234  DRAM 15.0 B/px
+sim 512 identity tiled_128x128    L1D miss/px 0.234  L2 0.234  L3 0.234  DRAM 15.0 B/px
+sim 512 identity tiled_256x256    L1D miss/px 0.234  L2 0.234  L3 0.234  DRAM 15.0 B/px
+sim 512 identity adaptive_model   L1D miss/px 0.234  L2 0.234  L3 0.234  DRAM 15.0 B/px
+sim 512 rotate90 row_major        L1D miss/px 1.172  L2 0.234  L3 0.234  DRAM 15.0 B/px
+sim 512 rotate90 column_major     L1D miss/px 1.219  L2 0.234  L3 0.234  DRAM 15.0 B/px
+sim 512 rotate90 morton           L1D miss/px 0.236  L2 0.234  L3 0.234  DRAM 15.0 B/px
+sim 512 rotate90 tiled_8x8        L1D miss/px 0.297  L2 0.234  L3 0.234  DRAM 15.0 B/px
+sim 512 rotate90 tiled_16x16      L1D miss/px 0.235  L2 0.234  L3 0.234  DRAM 15.0 B/px
+sim 512 rotate90 tiled_32x32      L1D miss/px 1.175  L2 0.234  L3 0.234  DRAM 15.0 B/px
+sim 512 rotate90 tiled_64x64      L1D miss/px 1.172  L2 0.234  L3 0.234  DRAM 15.0 B/px
+sim 512 rotate90 tiled_128x128    L1D miss/px 1.172  L2 0.234  L3 0.234  DRAM 15.0 B/px
+sim 512 rotate90 tiled_256x256    L1D miss/px 1.172  L2 0.234  L3 0.234  DRAM 15.0 B/px
+sim 512 rotate90 adaptive_model   L1D miss/px 0.252  L2 0.234  L3 0.234  DRAM 15.0 B/px
+sim 1024 identity row_major        L1D miss/px 0.234  L2 0.234  L3 0.234  DRAM 15.0 B/px
+sim 1024 identity column_major     L1D miss/px 2.156  L2 1.192  L3 0.234  DRAM 15.0 B/px
+sim 1024 identity morton           L1D miss/px 0.237  L2 0.234  L3 0.234  DRAM 15.0 B/px
+sim 1024 identity tiled_8x8        L1D miss/px 0.234  L2 0.234  L3 0.234  DRAM 15.0 B/px
+sim 1024 identity tiled_16x16      L1D miss/px 0.237  L2 0.234  L3 0.234  DRAM 15.0 B/px
+sim 1024 identity tiled_32x32      L1D miss/px 0.237  L2 0.234  L3 0.234  DRAM 15.0 B/px
+sim 1024 identity tiled_64x64      L1D miss/px 0.234  L2 0.234  L3 0.234  DRAM 15.0 B/px
+sim 1024 identity tiled_128x128    L1D miss/px 0.234  L2 0.234  L3 0.234  DRAM 15.0 B/px
+sim 1024 identity tiled_256x256    L1D miss/px 0.234  L2 0.234  L3 0.234  DRAM 15.0 B/px
+sim 1024 identity adaptive_model   L1D miss/px 0.234  L2 0.234  L3 0.234  DRAM 15.0 B/px
+sim 1024 rotate90 row_major        L1D miss/px 1.172  L2 1.172  L3 0.234  DRAM 15.0 B/px
+sim 1024 rotate90 column_major     L1D miss/px 1.219  L2 0.234  L3 0.234  DRAM 15.0 B/px
+sim 1024 rotate90 morton           L1D miss/px 0.300  L2 0.234  L3 0.234  DRAM 15.0 B/px
+sim 1024 rotate90 tiled_8x8        L1D miss/px 0.298  L2 0.297  L3 0.234  DRAM 15.0 B/px
+sim 1024 rotate90 tiled_16x16      L1D miss/px 1.174  L2 0.234  L3 0.234  DRAM 15.0 B/px
+sim 1024 rotate90 tiled_32x32      L1D miss/px 1.173  L2 0.234  L3 0.234  DRAM 15.0 B/px
+sim 1024 rotate90 tiled_64x64      L1D miss/px 1.172  L2 0.234  L3 0.234  DRAM 15.0 B/px
+sim 1024 rotate90 tiled_128x128    L1D miss/px 1.172  L2 0.234  L3 0.234  DRAM 15.0 B/px
+sim 1024 rotate90 tiled_256x256    L1D miss/px 1.172  L2 0.234  L3 0.234  DRAM 15.0 B/px
+sim 1024 rotate90 adaptive_model   L1D miss/px 0.236  L2 0.234  L3 0.234  DRAM 15.0 B/px
+sim 2000 identity row_major        L1D miss/px 0.234  L2 0.234  L3 0.234  DRAM 23.1 B/px
+sim 2000 identity column_major     L1D miss/px 2.156  L2 0.235  L3 0.235  DRAM 23.2 B/px
+sim 2000 identity morton           L1D miss/px 0.241  L2 0.236  L3 0.235  DRAM 23.2 B/px
+sim 2000 identity tiled_8x8        L1D miss/px 0.235  L2 0.234  L3 0.234  DRAM 23.1 B/px
+sim 2000 identity tiled_16x16      L1D miss/px 0.235  L2 0.234  L3 0.234  DRAM 23.1 B/px
+sim 2000 identity tiled_32x32      L1D miss/px 0.235  L2 0.234  L3 0.234  DRAM 23.1 B/px
+sim 2000 identity tiled_64x64      L1D miss/px 0.246  L2 0.235  L3 0.234  DRAM 23.1 B/px
+sim 2000 identity tiled_128x128    L1D miss/px 0.240  L2 0.235  L3 0.234  DRAM 23.2 B/px
+sim 2000 identity tiled_256x256    L1D miss/px 0.237  L2 0.235  L3 0.234  DRAM 23.2 B/px
+sim 2000 identity adaptive_model   L1D miss/px 0.234  L2 0.234  L3 0.234  DRAM 23.1 B/px
+sim 2000 rotate90 row_major        L1D miss/px 1.172  L2 0.234  L3 0.234  DRAM 23.2 B/px
+sim 2000 rotate90 column_major     L1D miss/px 1.219  L2 0.235  L3 0.235  DRAM 23.2 B/px
+sim 2000 rotate90 morton           L1D miss/px 0.241  L2 0.236  L3 0.235  DRAM 23.2 B/px
+sim 2000 rotate90 tiled_8x8        L1D miss/px 0.297  L2 0.234  L3 0.234  DRAM 23.2 B/px
+sim 2000 rotate90 tiled_16x16      L1D miss/px 0.235  L2 0.234  L3 0.234  DRAM 23.2 B/px
+sim 2000 rotate90 tiled_32x32      L1D miss/px 0.235  L2 0.234  L3 0.234  DRAM 23.2 B/px
+sim 2000 rotate90 tiled_64x64      L1D miss/px 0.246  L2 0.235  L3 0.234  DRAM 23.2 B/px
+sim 2000 rotate90 tiled_128x128    L1D miss/px 0.240  L2 0.235  L3 0.234  DRAM 23.2 B/px
+sim 2000 rotate90 tiled_256x256    L1D miss/px 0.237  L2 0.235  L3 0.234  DRAM 23.2 B/px
+sim 2000 rotate90 adaptive_model   L1D miss/px 0.237  L2 0.235  L3 0.234  DRAM 23.2 B/px
+sim 2048 identity row_major        L1D miss/px 0.234  L2 0.234  L3 0.234  DRAM 23.3 B/px
+sim 2048 identity column_major     L1D miss/px 2.156  L2 2.156  L3 1.176  DRAM 144.3 B/px
+sim 2048 identity morton           L1D miss/px 0.252  L2 0.234  L3 0.234  DRAM 23.3 B/px
+sim 2048 identity tiled_8x8        L1D miss/px 0.234  L2 0.234  L3 0.234  DRAM 23.3 B/px
+sim 2048 identity tiled_16x16      L1D miss/px 0.238  L2 0.234  L3 0.234  DRAM 23.3 B/px
+sim 2048 identity tiled_32x32      L1D miss/px 0.250  L2 0.234  L3 0.234  DRAM 23.3 B/px
+sim 2048 identity tiled_64x64      L1D miss/px 0.234  L2 0.234  L3 0.234  DRAM 23.3 B/px
+sim 2048 identity tiled_128x128    L1D miss/px 0.234  L2 0.234  L3 0.234  DRAM 23.3 B/px
+sim 2048 identity tiled_256x256    L1D miss/px 0.234  L2 0.234  L3 0.234  DRAM 23.3 B/px
+sim 2048 identity adaptive_model   L1D miss/px 0.234  L2 0.234  L3 0.234  DRAM 23.3 B/px
+sim 2048 rotate90 row_major        L1D miss/px 1.172  L2 1.172  L3 1.172  DRAM 144.0 B/px
+sim 2048 rotate90 column_major     L1D miss/px 1.219  L2 1.219  L3 0.234  DRAM 23.3 B/px
+sim 2048 rotate90 morton           L1D miss/px 0.315  L2 0.234  L3 0.234  DRAM 23.6 B/px
+sim 2048 rotate90 tiled_8x8        L1D miss/px 0.298  L2 0.297  L3 0.297  DRAM 32.0 B/px
+sim 2048 rotate90 tiled_16x16      L1D miss/px 1.174  L2 0.234  L3 0.234  DRAM 24.0 B/px
+sim 2048 rotate90 tiled_32x32      L1D miss/px 1.188  L2 0.234  L3 0.234  DRAM 24.0 B/px
+sim 2048 rotate90 tiled_64x64      L1D miss/px 1.172  L2 0.234  L3 0.234  DRAM 24.0 B/px
+sim 2048 rotate90 tiled_128x128    L1D miss/px 1.172  L2 0.234  L3 0.234  DRAM 23.9 B/px
+sim 2048 rotate90 tiled_256x256    L1D miss/px 1.172  L2 1.172  L3 0.234  DRAM 23.9 B/px
+sim 2048 rotate90 adaptive_model   L1D miss/px 0.298  L2 0.297  L3 0.297  DRAM 32.0 B/px
+sim 4096 identity row_major        L1D miss/px 0.234  L2 0.234  L3 0.234  DRAM 26.1 B/px
+sim 4096 identity column_major     L1D miss/px 2.156  L2 2.156  L3 2.156  DRAM 209.4 B/px
+sim 4096 identity morton           L1D miss/px 0.284  L2 0.234  L3 0.234  DRAM 26.3 B/px
+sim 4096 identity tiled_8x8        L1D miss/px 0.238  L2 0.234  L3 0.234  DRAM 26.1 B/px
+sim 4096 identity tiled_16x16      L1D miss/px 0.281  L2 0.234  L3 0.234  DRAM 26.1 B/px
+sim 4096 identity tiled_32x32      L1D miss/px 0.250  L2 0.234  L3 0.234  DRAM 26.1 B/px
+sim 4096 identity tiled_64x64      L1D miss/px 0.234  L2 0.234  L3 0.234  DRAM 26.1 B/px
+sim 4096 identity tiled_128x128    L1D miss/px 0.234  L2 0.234  L3 0.234  DRAM 26.1 B/px
+sim 4096 identity tiled_256x256    L1D miss/px 0.234  L2 0.234  L3 0.234  DRAM 26.1 B/px
+sim 4096 identity adaptive_model   L1D miss/px 0.234  L2 0.234  L3 0.234  DRAM 26.1 B/px
+sim 4096 rotate90 row_major        L1D miss/px 1.172  L2 1.172  L3 1.172  DRAM 146.8 B/px
+sim 4096 rotate90 column_major     L1D miss/px 1.219  L2 1.219  L3 1.219  DRAM 88.9 B/px
+sim 4096 rotate90 morton           L1D miss/px 0.347  L2 0.234  L3 0.234  DRAM 26.6 B/px
+sim 4096 rotate90 tiled_8x8        L1D miss/px 0.300  L2 0.297  L3 0.297  DRAM 34.8 B/px
+sim 4096 rotate90 tiled_16x16      L1D miss/px 1.219  L2 0.234  L3 0.234  DRAM 26.8 B/px
+sim 4096 rotate90 tiled_32x32      L1D miss/px 1.188  L2 0.234  L3 0.234  DRAM 26.8 B/px
+sim 4096 rotate90 tiled_64x64      L1D miss/px 1.172  L2 0.234  L3 0.234  DRAM 26.8 B/px
+sim 4096 rotate90 tiled_128x128    L1D miss/px 1.172  L2 1.172  L3 0.234  DRAM 26.8 B/px
+sim 4096 rotate90 tiled_256x256    L1D miss/px 1.172  L2 1.172  L3 0.234  DRAM 26.8 B/px
+sim 4096 rotate90 adaptive_model   L1D miss/px 0.423  L2 0.422  L3 0.422  DRAM 50.8 B/px
+  (35.0s)
++ C:\Users\ADITI KOTNALA\AppData\Local\Programs\Python\Python313\python.exe scripts/collect_env.py --tag after
+environment (after): AC power=True, battery=76%, power plan=Power Scheme GUID: 381b4222-f694-41f0-9685-ff5bb260df2e  (Balanced)
+  (4.0s)
+done; raw data: bench_native.csv, bench_scalar.csv, cachesim.csv, cachesim_geometry.json, memory_native.csv, samples_native.csv, samples_scalar.csv, session_native.jsonl, session_scalar.jsonl, system_native.json, system_scalar.json
+EXIT 0

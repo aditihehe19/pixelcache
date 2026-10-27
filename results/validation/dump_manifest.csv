@@ -1,0 +1,16 @@
+native,photo,512,512,unpack,results\validation/photo_512x512_unpack.f32,results\validation/photo_512x512_input.ppm
+native,photo,512,512,yuv,results\validation/photo_512x512_yuv.f32,results\validation/photo_512x512_input.ppm
+native,photo,512,512,hsv,results\validation/photo_512x512_hsv.f32,results\validation/photo_512x512_input.ppm
+native,photo,512,512,lab,results\validation/photo_512x512_lab.f32,results\validation/photo_512x512_input.ppm
+native,noise,512,512,unpack,results\validation/noise_512x512_unpack.f32,results\validation/noise_512x512_input.ppm
+native,noise,512,512,yuv,results\validation/noise_512x512_yuv.f32,results\validation/noise_512x512_input.ppm
+native,noise,512,512,hsv,results\validation/noise_512x512_hsv.f32,results\validation/noise_512x512_input.ppm
+native,noise,512,512,lab,results\validation/noise_512x512_lab.f32,results\validation/noise_512x512_input.ppm
+native,gradient,512,512,unpack,results\validation/gradient_512x512_unpack.f32,results\validation/gradient_512x512_input.ppm
+native,gradient,512,512,yuv,results\validation/gradient_512x512_yuv.f32,results\validation/gradient_512x512_input.ppm
+native,gradient,512,512,hsv,results\validation/gradient_512x512_hsv.f32,results\validation/gradient_512x512_input.ppm
+native,gradient,512,512,lab,results\validation/gradient_512x512_lab.f32,results\validation/gradient_512x512_input.ppm
+native,mixed,333,217,unpack,results\validation/mixed_333x217_unpack.f32,results\validation/mixed_333x217_input.ppm
+native,mixed,333,217,yuv,results\validation/mixed_333x217_yuv.f32,results\validation/mixed_333x217_input.ppm
+native,mixed,333,217,hsv,results\validation/mixed_333x217_hsv.f32,results\validation/mixed_333x217_input.ppm
+native,mixed,333,217,lab,results\validation/mixed_333x217_lab.f32,results\validation/mixed_333x217_input.ppm
