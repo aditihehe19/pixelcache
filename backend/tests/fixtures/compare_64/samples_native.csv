@@ -1,0 +1,10 @@
+suite,build_variant,image_kind,width,height,op,mapping,label,condition,rep,inner_iters,ms_per_run,tsc_ticks_per_run,core_ghz_probe
+single,native,gradient,64,48,hsv,identity,morton,warm,0,1,0.0146,45631,4.186
+single,native,gradient,64,48,hsv,identity,row_major,warm,0,1,0.0084,26214,4.186
+single,native,gradient,64,48,hsv,identity,tiled_16x16,warm,0,1,0.0095,29834,4.186
+single,native,gradient,64,48,hsv,identity,row_major,warm,1,1,0.0083,26214,4.31
+single,native,gradient,64,48,hsv,identity,morton,warm,1,1,0.0133,41569,4.31
+single,native,gradient,64,48,hsv,identity,tiled_16x16,warm,1,1,0.0086,26967,4.31
+single,native,gradient,64,48,hsv,identity,row_major,warm,2,1,0.0087,27233,4.379
+single,native,gradient,64,48,hsv,identity,tiled_16x16,warm,2,1,0.0084,26454,4.379
+single,native,gradient,64,48,hsv,identity,morton,warm,2,1,0.0149,48124,4.379

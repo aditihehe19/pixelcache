@@ -1,0 +1,10 @@
+source,width,height,pixels,mapping,label,tile_w,tile_h,level,accesses,misses,miss_rate,misses_per_px,writebacks,dram_read_bytes_per_px,dram_write_bytes_per_px
+model,64,48,3072,identity,row_major,32,32,L1D,6624,720,0.108696,0.234375,0,15,0
+model,64,48,3072,identity,row_major,32,32,L2,720,720,1,0.234375,0,15,0
+model,64,48,3072,identity,row_major,32,32,L3,720,720,1,0.234375,0,15,0
+model,64,48,3072,identity,morton,32,32,L1D,6624,720,0.108696,0.234375,0,15,0
+model,64,48,3072,identity,morton,32,32,L2,720,720,1,0.234375,0,15,0
+model,64,48,3072,identity,morton,32,32,L3,720,720,1,0.234375,0,15,0
+model,64,48,3072,identity,tiled_16x16,16,16,L1D,6624,720,0.108696,0.234375,0,15,0
+model,64,48,3072,identity,tiled_16x16,16,16,L2,720,720,1,0.234375,0,15,0
+model,64,48,3072,identity,tiled_16x16,16,16,L3,720,720,1,0.234375,0,15,0

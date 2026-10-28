@@ -55,7 +55,10 @@ scripts/                  run_pipeline.py, prepare_images.py, validate_reference
 data/                     generated inputs (not committed) + README
 results/raw/              every raw measurement as CSV/JSON
 results/tables/, figures/ derived tables and charts
-docs/                     architecture.md, methodology.md, results.md (report), presentation.md
+docs/                     architecture.md, methodology.md, results.md (report), presentation.md,
+                          webapp.md (web application: audit, architecture, API, metric provenance)
+backend/                  FastAPI service: app/{api,schemas,services,models,db,core}, tests/, requirements.txt
+frontend/                 React + TypeScript + Vite + Tailwind UI: src/{api,components,pages,lib,test}
 ```
 
 ## Build and run
@@ -95,8 +98,126 @@ space-free directory junction and add the startfile prefix, e.g.
 `-DCMAKE_CXX_COMPILER=K:/toolchains/winlibs-gcc16/bin/g++.exe
 "-DCMAKE_EXE_LINKER_FLAGS=-BK:/toolchains/winlibs-gcc16/x86_64-w64-mingw32/lib/"`.
 
+## Web application (PixelCache)
+
+A browser front end for the same engine. You configure an experiment, the
+backend runs the real `cachevision_bench_native` (and optionally
+`cachevision_sim` and the reference validation), stores every repetition
+in SQLite, and the UI charts the stored measurements. Nothing in the web
+application computes or invents a benchmark number. Details:
+[docs/webapp.md](docs/webapp.md).
+
+```
+React UI (:5173) ──/api──► FastAPI (:8000) ──subprocess, argv list, timeout──► build/cachevision_bench_native
+                               │                                               build/cachevision_sim
+                               ├─ single worker queue (benchmarks never overlap)  scripts/validate_reference.py
+                               └─ SQLite: experiments ─< results ─< repetitions, cache rows, reports
+```
+
+| page | route | what it shows |
+|---|---|---|
+| Overview | `/` | research question, engine status, stored-measurement counts, latest result, measured scaling chart |
+| Workbench | `/experiments/new` | experiment form (conversion, mapping, input, size, strategies and tiles, adaptive, repetitions, cache state, cache model, validation), live engine-argument preview, suite runner |
+| Results | `/experiments/:id` | live status, measurements table, runtime / speedup / throughput / cycles / repetition charts, simulated cache section, correctness, environment, report generation |
+| History | `/history` | searchable, filterable, paginated table; compare selected; delete with confirmation |
+| Compare | `/compare?ids=…` | cross-run comparison in ns/pixel with warnings when conditions differ |
+| Cache analysis | `/cache-analysis` | model assumptions, CPUID geometry, hits/misses/miss rates of simulated runs |
+| Reports | `/reports` | generate and download HTML or Markdown reports from stored data |
+
+### Prerequisites
+
+* The C++ engine built as described above (`build/cachevision_bench_native`, `build/cachevision_sim`).
+* Python 3.11+ with `pip install -r backend/requirements.txt`.
+* Node.js 20+ with npm.
+
+Tested on Windows 11 (GCC 16.2 / MinGW-w64, Python 3.13, Node 24). The backend and
+engine code paths for Linux exist, but only the Windows build was exercised here.
+
+### Setup and run
+
+```bash
+pip install -r backend/requirements.txt
+```
+
+```bash
+npm --prefix frontend install
+```
+
+```bash
+python scripts/dev.py
+```
+
+`scripts/dev.py` starts both servers (`--check` only verifies prerequisites). Then
+open http://localhost:5173; the API documentation is at http://127.0.0.1:8000/docs.
+The servers can also be started separately:
+
+```bash
+python -m uvicorn app.main:app --app-dir backend --host 127.0.0.1 --port 8000
+```
+
+```bash
+npm --prefix frontend run dev
+```
+
+Configuration (all optional) goes in `backend/.env`; see
+[backend/.env.example](backend/.env.example) for the build directory, data
+directory, database URL (PostgreSQL works via `PIXELCACHE_DATABASE_URL`), CORS
+origin, limits and timeouts. Experiment history lives in `backend/data/pixelcache.db`
+and survives restarts.
+
+### Running a real benchmark
+
+In the UI: Workbench → for example *YUV*, *convert + rotate 90°*, *2048×2048*,
+strategies row-major + Morton + adaptive (calibrated) + tiled 32×32, enable the cache
+model → **Run comparison**. The results page polls until the engine finishes. The same
+through the API:
+
+```bash
+curl -X POST http://127.0.0.1:8000/api/experiments/compare -H "Content-Type: application/json" -d "{\"op\":\"yuv\",\"mapping\":\"rotate90\",\"image_source\":\"photo\",\"width\":2048,\"height\":2048,\"strategies\":[{\"strategy\":\"morton\"},{\"strategy\":\"adaptive_calib\"}],\"reps\":11,\"cache_sim\":{\"enabled\":true}}"
+```
+
+Inspect results with `GET /api/experiments/{id}` (or the History page), and generate
+a report with `POST /api/reports/{id}` followed by `GET /api/reports/{report_id}/download`
+(or the Reports page).
+
+### Tests
+
+```bash
+ctest --test-dir build --output-on-failure
+```
+
+```bash
+cd backend && python -m pytest -q
+```
+
+```bash
+npm --prefix frontend test
+```
+
+The backend suite (44 tests) includes an end-to-end test that drives the **real**
+engine through the API: submit, results, persistence, analytics, reports, restart and
+delete. Fakes are used only for failure paths such as timeouts, non-zero exits and
+malformed output. The frontend suite (19 tests) covers form validation, API error
+handling, loading and empty states, and result rendering from a recorded API response.
+
+### Known limitations
+
+* Hardware performance counters are not available on the development machine, so
+  cycles are estimates and cache statistics come only from the simulator. Both are
+  labelled in every view and report.
+* One benchmark runs at a time by design. A full suite can occupy the queue for tens of
+  minutes, so use quick mode for demonstrations.
+* Reference validation runs only for images up to 1 Mpixel, and the cache model only up
+  to 16.8 Mpixel (both configurable). The bit-exact output check always runs.
+* The browser, the dev servers and other programs share the machine with the engine.
+  Expect higher run-to-run variation than in the offline benchmark sessions; the UI
+  highlights CV above 5%.
+* Single-user local tool: there is no authentication, and it should not be exposed
+  beyond localhost.
+
 ## Documentation
 
+* [docs/webapp.md](docs/webapp.md): web application, covering the engine audit, architecture, API reference, metric provenance and security
 * [docs/methodology.md](docs/methodology.md): conventions, timing procedure, metric definitions, adaptive model
 * [docs/architecture.md](docs/architecture.md): module structure and design decisions
 * [docs/results.md](docs/results.md): the COA report, covering results, analysis, limitations and threats to validity

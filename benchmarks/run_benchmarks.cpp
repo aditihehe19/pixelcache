@@ -3,6 +3,7 @@
 //   cachevision_bench --config benchmarks/benchmark_config.json --suites main,tile_sweep --out results/raw
 //   cachevision_bench --single --op yuv --mapping identity --variant tiled:32x32 --size 4096x4096
 //                     --image mixed --reps 11 --condition warm --out results/raw
+//                     (--variant also takes a comma-separated list, e.g. row_major,morton,tiled:32x32)
 //   cachevision_bench --memory --out results/raw          memory-hierarchy characterisation
 //   cachevision_bench --sysinfo --out results/raw         host description only
 //   cachevision_bench --dump --image photo --size 512x512 --data data --out results/validation
@@ -338,7 +339,16 @@ int main(int argc, char** argv) {
         g.conditions = {c};
         g.reps = a.reps;
         g.min_sample_ms = 0.0;  // one run per sample: makes perf-stat differencing exact
-        g.variants = {parse_variant(a.variant)};
+        // --variant accepts a comma-separated list: all variants then share one
+        // group (same input buffer, shuffled interleaved repetitions), which is
+        // what a fair side-by-side comparison needs.
+        for (const auto& name : split(a.variant, ',')) {
+            Variant v = parse_variant(name);
+            const bool dup = std::any_of(g.variants.begin(), g.variants.end(),
+                                         [&](const Variant& x) { return x.label == v.label; });
+            if (!dup) g.variants.push_back(v);
+        }
+        if (g.variants.empty()) die("empty --variant");
         const ImageU8 in = get_image(a.image, a.width, a.height, a.data, g.image_kind);
         ImageF32 out = make_output(in, g.mapping);
         if (g.reps > 0) run_one_group(s, g, in, out);

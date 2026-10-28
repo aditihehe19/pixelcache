@@ -1,0 +1,34 @@
+{
+  "cpu_vendor": "GenuineIntel",
+  "cpu_brand": "12th Gen Intel(R) Core(TM) i5-12500H",
+  "cpu_family": 6,
+  "cpu_model": 154,
+  "cpu_stepping": 3,
+  "hybrid": true,
+  "logical_processors": 16,
+  "physical_cores": 12,
+  "core_types": "E(class 0): 8 cores/8 logical; P(class 1): 4 cores/8 logical;",
+  "total_memory_bytes": 1.68499e+10,
+  "os": "Windows 10.0 build 26200",
+  "compiler": "gcc 16.2.0",
+  "build_variant": "native",
+  "build_flags": "GNU 16.2.0: -O3 -march=native -ffp-contract=off -fno-fast-math -Wall -Wextra",
+  "simd_enabled_at_compile_time": "SSE2 SSE4.2 AVX AVX2 FMA BMI2",
+  "ac_power": "yes",
+  "tsc_ghz_measured": 3.1104,
+  "pinned_cpu": "logical CPU 2 (efficiency class 1)",
+  "priority": "process=HIGH, thread=HIGHEST",
+  "caches": [
+    {"level": 1, "type": "data", "size_bytes": 49152, "line_bytes": 64, "ways": 12, "sets": 64, "shared_by_logical": 2, "inclusive": false, "source": "cpuid.4"},
+    {"level": 1, "type": "instruction", "size_bytes": 32768, "line_bytes": 64, "ways": 8, "sets": 64, "shared_by_logical": 2, "inclusive": false, "source": "cpuid.4"},
+    {"level": 2, "type": "unified", "size_bytes": 1310720, "line_bytes": 64, "ways": 10, "sets": 2048, "shared_by_logical": 8, "inclusive": false, "source": "cpuid.4"},
+    {"level": 3, "type": "unified", "size_bytes": 18874368, "line_bytes": 64, "ways": 12, "sets": 24576, "shared_by_logical": 64, "inclusive": false, "source": "cpuid.4"},
+    {"level": 3, "type": "unified", "size_bytes": 18874368, "line_bytes": 64, "ways": 12, "sets": 24576, "shared_by_logical": 16, "inclusive": null, "source": "os"},
+    {"level": 1, "type": "data", "size_bytes": 49152, "line_bytes": 64, "ways": 12, "sets": 64, "shared_by_logical": 2, "inclusive": null, "source": "os"},
+    {"level": 1, "type": "instruction", "size_bytes": 32768, "line_bytes": 64, "ways": 8, "sets": 64, "shared_by_logical": 2, "inclusive": null, "source": "os"},
+    {"level": 2, "type": "unified", "size_bytes": 1310720, "line_bytes": 64, "ways": 10, "sets": 2048, "shared_by_logical": 2, "inclusive": null, "source": "os"}
+  ],
+  "tlbs": [
+  ],
+  "hardware_counters": "unavailable on this build/platform (no PMU access); see scripts/collect_perf.sh for Linux perf"
+}

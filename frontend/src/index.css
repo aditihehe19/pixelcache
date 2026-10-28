@@ -1,0 +1,118 @@
+@import "tailwindcss";
+
+/* Design tokens. Components use the semantic names (paper, ink, line, accent)
+   so the optional dark theme only redefines these variables. */
+:root {
+  --paper: #f6f4ef;
+  --surface: #fcfbf8;
+  --sunken: #efece5;
+  --line: #ddd8cc;
+  --line-strong: #c8c1b2;
+  --ink: #1b2433;
+  --ink-2: #4a5462;
+  --muted: #7d8590;
+  --accent: #23578a;
+  --accent-ink: #ffffff;
+  --accent-soft: #e3ebf3;
+  --ok: #2f7a47;
+  --ok-soft: #e4efe6;
+  --warn: #93600f;
+  --warn-soft: #f5ecd9;
+  --err: #b0301f;
+  --err-soft: #f6e3df;
+  --focus: #23578a;
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  --paper: #13161b;
+  --surface: #1a1e25;
+  --sunken: #101318;
+  --line: #2c323c;
+  --line-strong: #3b4350;
+  --ink: #e7e4dd;
+  --ink-2: #aab0b9;
+  --muted: #7f8792;
+  --accent: #79aee0;
+  --accent-ink: #0f1620;
+  --accent-soft: #1e2a38;
+  --ok: #6dbb84;
+  --ok-soft: #18291e;
+  --warn: #d9a55a;
+  --warn-soft: #2d2415;
+  --err: #ec8a7a;
+  --err-soft: #321b17;
+  --focus: #79aee0;
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-surface: var(--surface);
+  --color-sunken: var(--sunken);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+  --color-accent-soft: var(--accent-soft);
+  --color-ok: var(--ok);
+  --color-ok-soft: var(--ok-soft);
+  --color-warn: var(--warn);
+  --color-warn-soft: var(--warn-soft);
+  --color-err: var(--err);
+  --color-err-soft: var(--err-soft);
+  --font-sans: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, "Cascadia Mono", "JetBrains Mono", "SF Mono", Consolas, monospace;
+}
+
+html,
+body {
+  background: var(--paper);
+  color: var(--ink);
+}
+
+body {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Visible keyboard focus everywhere; mouse focus stays quiet. */
+:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+  border-radius: 3px;
+}
+
+.num {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+/* Recharts text inherits the theme. */
+.recharts-text,
+.recharts-cartesian-axis-tick-value {
+  fill: var(--ink-2);
+  font-size: 11px;
+}
+.recharts-cartesian-grid line {
+  stroke: var(--line);
+}
+.recharts-default-tooltip {
+  background: var(--surface) !important;
+  border-color: var(--line) !important;
+  color: var(--ink) !important;
+}

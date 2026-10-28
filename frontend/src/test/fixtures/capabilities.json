@@ -1,0 +1,95 @@
+{
+ "operations": [
+  {
+   "value": "yuv",
+   "label": "RGB \u2192 YUV (BT.601)"
+  },
+  {
+   "value": "hsv",
+   "label": "RGB \u2192 HSV"
+  },
+  {
+   "value": "lab",
+   "label": "RGB \u2192 CIELAB (sRGB, D65)"
+  },
+  {
+   "value": "unpack",
+   "label": "RGB888 \u2192 float (memory-bound reference)"
+  },
+  {
+   "value": "index_only",
+   "label": "address generation only (no memory)"
+  }
+ ],
+ "strategies": [
+  {
+   "value": "row_major",
+   "label": "Row-major (baseline)"
+  },
+  {
+   "value": "column_major",
+   "label": "Column-major (negative control)"
+  },
+  {
+   "value": "tiled",
+   "label": "Spatial tiling"
+  },
+  {
+   "value": "morton",
+   "label": "Morton / Z-order"
+  },
+  {
+   "value": "adaptive_model",
+   "label": "Adaptive tile (model only)"
+  },
+  {
+   "value": "adaptive_calib",
+   "label": "Adaptive tile (model + calibration)"
+  }
+ ],
+ "mappings": [
+  "identity",
+  "rotate90"
+ ],
+ "image_sources": [
+  {
+   "value": "photo",
+   "label": "Standard photo (grace_hopper.jpg, mirror-tiled to size)"
+  },
+  {
+   "value": "gradient",
+   "label": "Synthetic: smooth gradient"
+  },
+  {
+   "value": "noise",
+   "label": "Synthetic: uniform noise"
+  },
+  {
+   "value": "mixed",
+   "label": "Synthetic: gradient + texture + noise patches"
+  },
+  {
+   "value": "upload",
+   "label": "Uploaded image"
+  }
+ ],
+ "conditions": [
+  "warm",
+  "flushed"
+ ],
+ "limits": {
+  "min_edge": 16,
+  "max_edge": 8192,
+  "max_pixels": 67108864,
+  "min_tile": 1,
+  "max_tile": 4096,
+  "min_reps": 3,
+  "max_reps": 51,
+  "max_variants": 12,
+  "max_sim_pixels": 16777216,
+  "max_validation_pixels": 1048576,
+  "max_upload_mb": 25
+ },
+ "engine_available": true,
+ "simulator_available": true
+}

@@ -1,0 +1,10 @@
+{
+  "source": "cpuid",
+  "cpu": "12th Gen Intel(R) Core(TM) i5-12500H",
+  "levels": [
+    {"name": "L1D", "size_bytes": 49152, "line_bytes": 64, "ways": 12},
+    {"name": "L2", "size_bytes": 1310720, "line_bytes": 64, "ways": 10},
+    {"name": "L3", "size_bytes": 18874368, "line_bytes": 64, "ways": 12}
+  ],
+  "policy": "true LRU, write-back, write-allocate, non-inclusive, no prefetch, modulo set index"
+}
